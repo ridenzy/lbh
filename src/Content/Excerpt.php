@@ -79,5 +79,4 @@ final class Excerpt {
 // flexible type
 //echo Excerpt::flexibleExcerpt(true);; // accept any argument order or type and rectify using a robust internal detection
 
-echo Excerpt::flexibleExcerpt(true);
 ?>
