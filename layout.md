@@ -12,6 +12,7 @@ lbh/
 │   ├── Lists/
 │   │   ├── Pagination.php
 │   │   ├── Related.php
+│   │   ├── Tag_Cloud
 │   ├── Seo/
 │   │   ├── Meta.php
 │   │   ├── Schema.php
@@ -19,10 +20,9 @@ lbh/
 │   │   ├── Rss.php
 │   │   ├── Sitemap.php
 │   ├── Web/
-│   │   ├── Sanitize.php
 │   │   ├── Urls.php
 │   ├── Images/
-│   │   ├── Responsive.php
+│   │   ├── Responsive_and_Standard.php
 ├── tests/
 │   └── ExcerptTest.php
 └── README.md
