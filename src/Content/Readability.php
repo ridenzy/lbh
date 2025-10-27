@@ -31,3 +31,5 @@ final class Readability {
     return max(1, (int)ceil($words / max(100, $wpm)));
   }
 }
+
+
