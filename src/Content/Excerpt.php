@@ -15,8 +15,10 @@ To select or use material from (a longer work).
 
 
 
-final class Excerpt {
-    public static function strictExcerpt(string $text = "", int $textLimit = 50, bool $showDetails = false): string {
+final class Excerpt 
+{
+    public static function strictExcerpt(string $text = "", int $textLimit = 50, bool $showDetails = false): string 
+    {
 
         if ($showDetails) {
             echo "Debug info:\n";
@@ -34,7 +36,8 @@ final class Excerpt {
 
 
 
-    public static function flexibleExcerpt($a = "", $b = null, $c = null): string {
+    public static function flexibleExcerpt($a = "", $b = null, $c = null): string 
+    {
         $text = "";
         $limit = 50;
         $showDetails = false;
@@ -72,11 +75,16 @@ final class Excerpt {
 
 <?php
 
+if ( (PHP_SAPI === 'cli') && (basename(__FILE__) === basename($_SERVER['SCRIPT_FILENAME'])) ) {
 
-// Strict type
-//echo Excerpt::strictExcerpt("Hello world this is a test of excerpts", 10, true); 
+    echo "Strict type\n";
+    echo Excerpt::strictExcerpt("Hello world this is a test of excerpts", 10, true); 
 
-// flexible type
-//echo Excerpt::flexibleExcerpt(true);; // accept any argument order or type and rectify using a robust internal detection
+    echo "flexible type\n";
+    echo Excerpt::flexibleExcerpt(true);; // accept any argument order or type and rectify using a robust internal detection
+
+}
+
+
 
 ?>

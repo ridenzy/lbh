@@ -6,9 +6,11 @@ namespace loadBlogHelpers\Content;
 
 
 
-final class Readability {
+final class Readability 
+{
     //ps: The average adult reads around 200–250 words per minute, so 200 is a good default.
-  public static function readTime(string $text, int $wpm=200): int {
+  public static function readTime(string $text, int $wpm=200): int 
+  {
     
 
     //strip_tags($text): Removes HTML markup ('<p>', '<h1>', '<b>', etc.), so we only count the visible text words.

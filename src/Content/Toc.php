@@ -5,7 +5,8 @@ namespace loadBlogHelpers\Content; // puts the class in loadBlogHelpers\Content 
 
 require_once __DIR__ . '/Slug.php'; // pulls in the Slug helper so Slug::make() is available.  | Note: Make sure Slug.php uses the same namespace (loadBlogHelpers\Content).
 
-final class Toc{
+final class Toc
+{
     //Extracts h2/h3 as TOC and injects missing ids back into the HTML.
     public static function extract(string $html): array
     {

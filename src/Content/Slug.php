@@ -6,8 +6,10 @@ namespace loadBlogHelpers\Content;
 
 //Turns a blog title into a clean URL slug (e.g., My Post → my-post).
 
-final class Slug {
-  public static function make(string $title): string {
+final class Slug 
+{
+  public static function make(string $title): string 
+  {
 
     // Detect which encoding text is most likely in.
     $encoding = mb_detect_encoding($title, ['UTF-8', 'ISO-8859-1', 'Windows-1252'], true);
