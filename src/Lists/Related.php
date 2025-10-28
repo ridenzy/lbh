@@ -211,3 +211,4 @@ if ((PHP_SAPI === 'cli') && (basename(__FILE__) === basename($_SERVER['SCRIPT_FI
         echo "  " . $rank . "." . $p['title'] . "\n";
     }
 }
+
