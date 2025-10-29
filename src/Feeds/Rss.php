@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace loadBlogHelpers\Feeds;
 
 // build a valid RSS 2.0 feed (XML) from your post data.
