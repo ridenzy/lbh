@@ -12,7 +12,7 @@ lbh/
 │   ├── Lists/
 │   │   ├── Pagination.php
 │   │   ├── Related.php
-│   │   ├── Tag_Cloud
+│   │   ├── TagCloud
 │   ├── Seo/
 │   │   ├── Meta.php
 │   │   ├── Schema.php
