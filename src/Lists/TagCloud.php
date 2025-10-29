@@ -77,26 +77,18 @@ final class TagCloud
     $counting = [];
 
     foreach($posts as $post){
-      if((is_array($post)) && (array_key_exists("tags",$post))){
-        $posts[$iteration]["tagCloud"] = self::generate($post, $counting);
-      }else{
-        // Safety guard against stringed post | i.e if post is like this: ['PHP Backend Programming']
-        $post = (is_string($post) ? (self::standardizeTagList([$post])) : (self::standardizeTagList($post)));
-
-        
-
-        // turn a situation of posts at an index with 'PHP Backend Programming' to ['PHP Backend Programming']
-        if(is_array($posts[$iteration])){
-          $posts[$iteration]["tagCloud"] = self::generate($post, $counting);
-
-        }else{
-          $swap = [$posts[$iteration]];
-          $posts[$iteration] = $swap;
-
-          $posts[$iteration]["tagCloud"] = self::generate($post, $counting);
-        }
-       
-      }
+      if (! is_array($post) || ! array_key_exists("tags", $post)) {  
+            // Safety guard against stringed post | i.e if post is like this: ['PHP Backend Programming']  
+            $post = (is_string($post) ? (self::standardizeTagList([$post])) : (self::standardizeTagList($post)));  
+  
+            // turn a situation of posts at an index with 'PHP Backend Programming' to ['PHP Backend Programming']  
+            if (! is_array($posts[$iteration])) {  
+                $swap = [$posts[$iteration]];  
+                $posts[$iteration] = $swap;  
+            }  
+      }  
+  
+      $posts[$iteration]["tagCloud"] = self::generate($post, $counting);  
       $iteration++;
     }
     return $posts;
@@ -149,7 +141,7 @@ if ( (PHP_SAPI === 'cli') && (basename(__FILE__) === basename($_SERVER['SCRIPT_F
 
 
 
-  echo TagCloud::runTestsForPossibleSituations($posts5);
+  echo TagCloud::runTestsForPossibleSituations($posts4);
 
  
 
