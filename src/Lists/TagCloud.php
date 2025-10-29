@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 //the namespace — so other files can 'use loadBlogHelpers\Lists\TagCloud;'  It’s part of the modular "Lists" helper package.
 
@@ -18,7 +19,7 @@ design (appears in 3 posts)
 
 
 
-final class TagCloud 
+final class TagCloud
 {
 
 
@@ -26,30 +27,30 @@ final class TagCloud
   private static function standardizeTagList(array $postItems): array
   {
 
-    if(count($postItems) > 1){ // checking if expected "array of strings" is here ['PHP', 'Backend', 'Programming'],
+    if (count($postItems) > 1) { // checking if expected "array of strings" is here ['PHP', 'Backend', 'Programming'],
       $postItems = ["tags" => $postItems]; // 
-    }else{  // the alternative "arrayed  string" ['PHP Backend Programming'];
+    } else {  // the alternative "arrayed  string" ['PHP Backend Programming'];
       $explodedPostItems = ["tags" => explode(" ", $postItems[0])];
-      $postItems= $explodedPostItems;
+      $postItems = $explodedPostItems;
     }
 
     return $postItems;
   }
- 
-  private static function generate(array $post, array &$counts): array 
+
+  private static function generate(array $post, array &$counts): array
   {
-    
-    
+
+
     foreach ($post['tags'] as $tag) {
       $tag = strtolower(trim($tag)); // normalize case + remove spaces
-      if ($tag === ''){
+      if ($tag === '') {
         continue; // ignore empty strings
-      } 
+      }
       // Count how often each tag appears
       $counts[$tag] = ($counts[$tag] ?? 0) + 1;
     }
-    
-    if (!$counts){ 
+
+    if (!$counts) {
       return [];
     };
 
@@ -71,24 +72,24 @@ final class TagCloud
 
 
 
-  public static function getTagCloud(array $posts): array 
+  public static function getTagCloud(array $posts): array
   {
     $iteration = 0;
     $counting = [];
 
-    foreach($posts as $post){
-      if (! is_array($post) || ! array_key_exists("tags", $post)) {  
-            // Safety guard against stringed post | i.e if post is like this: ['PHP Backend Programming']  
-            $post = (is_string($post) ? (self::standardizeTagList([$post])) : (self::standardizeTagList($post)));  
-  
-            // turn a situation of posts at an index with 'PHP Backend Programming' to ['PHP Backend Programming']  
-            if (! is_array($posts[$iteration])) {  
-                $swap = [$posts[$iteration]];  
-                $posts[$iteration] = $swap;  
-            }  
-      }  
-  
-      $posts[$iteration]["tagCloud"] = self::generate($post, $counting);  
+    foreach ($posts as $post) {
+      if (! is_array($post) || ! array_key_exists("tags", $post)) {
+        // Safety guard against stringed post | i.e if post is like this: ['PHP Backend Programming']  
+        $post = (is_string($post) ? (self::standardizeTagList([$post])) : (self::standardizeTagList($post)));
+
+        // turn a situation of posts at an index with 'PHP Backend Programming' to ['PHP Backend Programming']  
+        if (! is_array($posts[$iteration])) {
+          $swap = [$posts[$iteration]];
+          $posts[$iteration] = $swap;
+        }
+      }
+
+      $posts[$iteration]["tagCloud"] = self::generate($post, $counting);
       $iteration++;
     }
     return $posts;
@@ -96,7 +97,8 @@ final class TagCloud
 
 
 
-  public static function runTestsForPossibleSituations(array $arraySituation): void{
+  public static function runTestsForPossibleSituations(array $arraySituation): void
+  {
     print_r(self::getTagCloud($arraySituation));
   }
 }
@@ -106,7 +108,7 @@ final class TagCloud
    Demo block (runs only when this file is executed directly via CLI)
 -------------------------------- */
 
-if ( (PHP_SAPI === 'cli') && (basename(__FILE__) === basename($_SERVER['SCRIPT_FILENAME'])) ) {
+if ((PHP_SAPI === 'cli') && (basename(__FILE__) === basename($_SERVER['SCRIPT_FILENAME']))) {
 
   // Sample post data
 
@@ -142,7 +144,4 @@ if ( (PHP_SAPI === 'cli') && (basename(__FILE__) === basename($_SERVER['SCRIPT_F
 
 
   echo TagCloud::runTestsForPossibleSituations($posts4);
-
- 
-
 }
