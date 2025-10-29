@@ -1,8 +1,8 @@
 <?php
 
 declare(strict_types=1);
-//the namespace — so other files can 'use loadBlogHelpers\Lists\TagCloud;'  It’s part of the modular "Lists" helper package.
 
+//the namespace — so other files can 'use loadBlogHelpers\Lists\TagCloud;'  It’s part of the modular "Lists" helper package.
 namespace loadBlogHelpers\Lists;
 
 
@@ -27,9 +27,11 @@ final class TagCloud
   private static function standardizeTagList(array $postItems): array
   {
 
-    if (count($postItems) > 1) { // checking if expected "array of strings" is here ['PHP', 'Backend', 'Programming'],
-      $postItems = ["tags" => $postItems]; // 
-    } else {  // the alternative "arrayed  string" ['PHP Backend Programming'];
+    // checking if expected "array of strings" is here ['PHP', 'Backend', 'Programming'],
+    if (count($postItems) > 1) { 
+      $postItems = ["tags" => $postItems];
+    } else {  
+      // the alternative "arrayed  string" ['PHP Backend Programming'];
       $explodedPostItems = ["tags" => explode(" ", $postItems[0])];
       $postItems = $explodedPostItems;
     }
