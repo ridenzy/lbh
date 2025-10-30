@@ -38,3 +38,18 @@ final class Slug
 }
 
 
+
+
+
+/* -------------------------------
+   Demo block (runs only when this file is executed directly via CLI)
+-------------------------------- */
+
+if ( (PHP_SAPI === 'cli') && (basename(__FILE__) === basename($_SERVER['SCRIPT_FILENAME'])) ) {
+
+    
+
+echo Slug::make("How to make a mil in a second, whoopty doo !"); 
+// --> how-to-make-a-mil-in-a-second-whoopty-doo
+
+}

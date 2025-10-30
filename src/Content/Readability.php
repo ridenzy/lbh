@@ -1,5 +1,5 @@
 <?php
-
+declare(strict_types=1);
 namespace loadBlogHelpers\Content;
 
 //Estimates reading time in minutes (based on word count).
