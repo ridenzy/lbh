@@ -29,3 +29,35 @@ You’ll repeatedly need things like:
 Rather than coding those from scratch every time, you build this once → then just `composer require ridenzy/lbh` in any future project.
 
 It becomes your **personal developer toolkit** for all content-based sites.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+----
+
+
+# At the end of this project:
+
+
+Extend the Blog Helpers project into a proper “Publishing Module” — one that can be run as a CLI command (php blog-helpers publish) to automatically regenerate RSS + Sitemap + image metadata for sites.
+That would make it a production-grade tool.
