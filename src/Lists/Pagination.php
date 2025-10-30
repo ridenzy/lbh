@@ -16,7 +16,7 @@ Pagination, also known as paging, is the process of dividing a document into dis
 
 final class Pagination 
 {
-    public static function slice(array $items, int $perPage, int $pageNumber): array
+    public static function paginationDetails(array $items, int $perPage, int $pageNumber): array
     {
         // get total length of items
         $total = count($items);
@@ -59,7 +59,7 @@ if ( (PHP_SAPI === 'cli') && (basename(__FILE__) === basename($_SERVER['SCRIPT_F
     $posts = ['A','B','C','D','E'];
 
     for( $i = 0; $i < count($posts); $i++ ){
-        $result = Pagination::slice($posts, 2, $i+1);
+        $result = Pagination::paginationDetails($posts, 2, $i+1);
 
         echo "Page " .( $i + 1) . ": \n";
         print_r($result);
