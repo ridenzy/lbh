@@ -10,8 +10,10 @@ namespace loadBlogHelpers\Web;
 
 
 
-final class Urls {
-  public static function canonical(string $base, string $path): string {
+final class Urls 
+{
+  public static function canonical(string $base, string $path): string 
+  {
     return rtrim($base, '/') . '/' . ltrim($path, '/');
   }
 }
