@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 //the namespace — so other files can 'use loadBlogHelpers\Lists\TagCloud;'  It’s part of the modular "Lists" helper package.
 namespace loadBlogHelpers\Lists;
+use loadBlogHelpers\Seo\Keywords;
 
 
 //Generates tag weights for display.
@@ -14,6 +15,7 @@ AI (appears in 15 posts)
 startup (appears in 8 posts)
 design (appears in 3 posts)
 */
+
 
 
 
@@ -68,14 +70,25 @@ final class TagCloud
       $weights[$tag] = 1 + (int)round(4 * ($count - $min) / $spread);
     }
 
-    ksort($weights); // optional alphabetical order
+    arsort($weights); // arrange in descending order
     return $weights;
   }
 
 
-
-  public static function getTagCloud(array $posts): array
+  # get tags of multiple different  blog contents .. 
+  public static function getKeywords(string $blogContent, int $cutOff = 0): array
   {
+    
+    return array_keys(Keywords::analyzePostForKeywords($blogContent, $cutOff));
+  }
+
+
+
+  public static function getTagCloud(array $posts): array // makes tag cloud of whole content .ideally: feed tags of multiple different  blog contents .. 
+  {
+
+  
+    
     $iteration = 0;
     $counting = [];
 
@@ -99,11 +112,9 @@ final class TagCloud
 
 
 
-  public static function runTestsForPossibleSituations(array $arraySituation): void
-  {
-    print_r(self::getTagCloud($arraySituation));
-  }
+
 }
+
 
 
 /* -------------------------------
@@ -111,15 +122,17 @@ final class TagCloud
 -------------------------------- */
 
 if ((PHP_SAPI === 'cli') && (basename(__FILE__) === basename($_SERVER['SCRIPT_FILENAME']))) {
+  require_once __DIR__ . '/../../vendor/autoload.php';
+
 
   // Sample post data
 
   $posts1 = [
-    ['title' => 'Intro to PHP', 'tags' => ['PHP', 'Backend', 'Programming']],
-    ['title' => 'CSS Flexbox Guide', 'tags' => ['CSS', 'Frontend', 'Design']],
-    ['title' => 'Advanced PHP OOP', 'tags' => ['PHP', 'OOP', 'Backend']],
-    ['title' => 'JavaScript Basics', 'tags' => ['JavaScript', 'Frontend']],
-    ['title' => 'Fullstack Development', 'tags' => ['PHP', 'JavaScript', 'Frontend', 'Backend']],
+    ['title' => 'Intro to PHP', 'tags' => ['PHP', 'Backend', 'Programming']], // sample tags in blog post 1
+    ['title' => 'CSS Flexbox Guide', 'tags' => ['CSS', 'Frontend', 'Design']], // sample tags in blog post 2
+    ['title' => 'Advanced PHP OOP', 'tags' => ['PHP', 'OOP', 'Backend']],  // sample tags in blog post 3
+    ['title' => 'JavaScript Basics', 'tags' => ['JavaScript', 'Frontend']],  // sample tags in blog post 4
+    ['title' => 'Fullstack Development', 'tags' => ['PHP', 'JavaScript', 'Frontend', 'Backend']],  // sample tags in blog post 5
   ];
 
 
@@ -143,7 +156,14 @@ if ((PHP_SAPI === 'cli') && (basename(__FILE__) === basename($_SERVER['SCRIPT_FI
 
   $posts5 = ['PHP Backend Programming', 'CSS Frontend Design', 'PHP OOP Backend', 'JavaScript Frontend', 'PHP JavaScript Frontend Backend'];
 
+  $article = " 
+    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. 
+    At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. 
+    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. 
+    At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+    ";
 
 
-  echo TagCloud::runTestsForPossibleSituations($posts4);
+
+  
 }
