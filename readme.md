@@ -1,5 +1,8 @@
 
-Lightweight-PHP-Blog-Helper-Packages:    a **reusable PHP library** — a collection of small, clean, and well-documented **functions and classes** that help developers manage and display **blog articles** efficiently.
+# LBH — Lightweight Blog Helpers for PHP
+
+> **loadBlogHelpers (LBH)** is a modular collection of PHP utilities designed to simplify blog and content-driven development.  
+> It provides clean helpers for SEO, Slugging, Text Extraction, HTML parsing, and network utilities — ready to drop into any PHP project.
 
 
 
@@ -33,65 +36,34 @@ It becomes your **personal developer toolkit** for all content-based sites.
 
 
 
+---
 
+## 🚀 Features
 
-done:  
-- **Content**
-    
-    - `excerpt(string $text, int $limit=160): string` ✅ 
-        
-    - `read_time(string $text, int $wpm=200): int` ✅ 
-        
-    - `word_count(string $text): int` ✅ 
-        
-    - `slugify(string $title): string` ✅ 
-        
-    - `summarize(string $html, int $sentences=2): string` _(HTML → plain text → sentence trim) ✅ _
-        
-    - `build_toc(string $html): array` _(extract H2/H3; return anchors + titles)_     ✅ _
-        
-- **Lists & nav**
-    
-    - `paginate(array $items, int $perPage, int $page): array{items:array,total:int,pages:int,page:int}`  ✅
-        
-    - `prev_next(array $posts, string $currentSlug): array{prev:?array,next:?array}`  ✅
-        
-    - `tag_cloud(array $posts): array[tag => weight]`  ✅
-        
-    - `related_posts(array $posts, string $currentId, int $limit=5): array` _(simple TF score cosine-like)_ ✅
-        
-- **SEO**
-    
-    - `meta_tags(array $opts): string` _(title, description, canonical, robots)_ ✅
-        
-    - `open_graph(array $opts): string` _(og:title, og:description, image, type, url) ✅_
-        
-    - `twitter_cards(array $opts): string` ✅
-        
-    - `schema_article(array $opts): string` _(JSON-LD for Article/BlogPosting)_ ✅
-        
-- **URLs & links**
-    
-    - `canonical_url(string $base, string $path): string` ✅
-        
-    - `auto_link(string $text): string` _(linkify bare URLs; no double-linking)_ ✅
-        
-    - `sanitize_html(string $html): string` _(allowlist tags/attrs) ✅_
-        
-- **Feeds & maps**
-    
-    - `rss_feed(array $posts, array $site): string` ✅
-        
-    - `sitemap_xml(array $urls): string` ✅
-        
-- **Images**
-    
-    - `responsive_srcset(string $path, array $widths=[480,768,1200]):  ✅array{src:string,srcset:string,sizes:string}`
-        
-    - `img_alt_from_title(string $title): string`  ✅
+- **SEO Helpers** → Easily generate meta tags, sitemaps, canonical URLs, and analyze page text.
+- **Content Helpers** → Slugify titles, extract keywords, parse HTML, and format text.
+- **Page Helpers** → Make lightweight HTTP requests, strip markup, and extract visible DOM text.
+- **PSR-4 Autoloading** → Installable and extendable as a modern Composer package.
+- **Framework-Agnostic** → Works in plain PHP, Laravel, Symfony, WordPress, or custom stacks.
 
+---
 
+## 📦 Installation
 
+From [Packagist](https://packagist.org/packages/ridenzy/lbh):
+
+```bash
+composer require ridenzy/lbh:^1.0
+```
+
+---
+
+***Or directly from GitHub:
+
+```bash
+composer config repositories.lbh '{"type":"vcs","url":"https://github.com/ridenzy/lbh"}'
+composer require ridenzy/lbh:dev-main
+```
 
 ---
 
@@ -101,7 +73,8 @@ done:
 
 
 
-Possible to add features  More to come:
+
+Possible to add features,  More to come:
 
 --> 🔍 **2. SEO, Metadata & Social Sharing** 
 
