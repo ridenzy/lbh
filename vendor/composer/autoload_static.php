@@ -22,6 +22,21 @@ class ComposerStaticInitaf3d290957f23bf994eb3e81e50e3ad2
 
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'loadBlogHelpers\\Content\\Excerpt' => __DIR__ . '/../..' . '/src/Content/Excerpt.php',
+        'loadBlogHelpers\\Content\\Readability' => __DIR__ . '/../..' . '/src/Content/Readability.php',
+        'loadBlogHelpers\\Content\\Slug' => __DIR__ . '/../..' . '/src/Content/Slug.php',
+        'loadBlogHelpers\\Content\\Toc' => __DIR__ . '/../..' . '/src/Content/Toc.php',
+        'loadBlogHelpers\\Feeds\\IndexNow' => __DIR__ . '/../..' . '/src/Feeds/IndexNow.php',
+        'loadBlogHelpers\\Feeds\\Rss' => __DIR__ . '/../..' . '/src/Feeds/Rss.php',
+        'loadBlogHelpers\\Feeds\\Sitemap' => __DIR__ . '/../..' . '/src/Feeds/Sitemap.php',
+        'loadBlogHelpers\\Images\\ResponsiveAndStandard' => __DIR__ . '/../..' . '/src/Images/ResponsiveAndStandard.php',
+        'loadBlogHelpers\\Lists\\Pagination' => __DIR__ . '/../..' . '/src/Lists/Pagination.php',
+        'loadBlogHelpers\\Lists\\Related' => __DIR__ . '/../..' . '/src/Lists/Related.php',
+        'loadBlogHelpers\\Lists\\TagCloud' => __DIR__ . '/../..' . '/src/Lists/TagCloud.php',
+        'loadBlogHelpers\\Seo\\Keywords' => __DIR__ . '/../..' . '/src/Seo/Keywords.php',
+        'loadBlogHelpers\\Seo\\Meta' => __DIR__ . '/../..' . '/src/Seo/Meta.php',
+        'loadBlogHelpers\\Seo\\Schema' => __DIR__ . '/../..' . '/src/Seo/Schema.php',
+        'loadBlogHelpers\\Web\\Urls' => __DIR__ . '/../..' . '/src/Web/Urls.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
