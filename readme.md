@@ -58,7 +58,7 @@ composer require ridenzy/lbh:^1.0
 
 ---
 
-***Or directly from GitHub:
+***Or directly from GitHub:**
 
 ```bash
 composer config repositories.lbh '{"type":"vcs","url":"https://github.com/ridenzy/lbh"}'
