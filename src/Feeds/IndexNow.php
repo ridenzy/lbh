@@ -142,6 +142,8 @@ final class IndexNow
 
         $res = self::submit($urls, $host, $key, $keyUrl);
 
+        // display: search engines now index to.
+
         return $res;
 
 
