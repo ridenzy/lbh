@@ -31,7 +31,7 @@ final class Toc
         $seen = []; // deduplicate ids: id => count
 
         foreach ($nodes as $h) {
-            /** @var \DOMElement $h */
+            /** @var \DOMElement $h */  // --this line has no runtime effect. PHP ignores it at execution time—but it fixes editor warnings and improves autocompletion.  |  here we say Treat $h as a DOMElement inside this loop
             // - 'textContent' → visible text in the heading.
             $text = trim($h->textContent);  
 
